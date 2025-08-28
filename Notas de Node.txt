@@ -1,0 +1,236 @@
+- Todos los ejercicios de node del curso son expandibles y son fuertas para practicar
+- Se usa prisma para bd sql y mongoose para mongoose
+- Usar node v +18
+- 
+
+-------------------------------------
+Seccion 2 fundamentos node
+- Preguntas comunes sobre Node
+- Hola Mundo en Node
+- Laboratorio con FileSystem
+- Code Execution
+- Event Loop
+
+Notas:
+- Frameworks modernos  de front se basen en node
+- Node como tal está orientado para el backend
+- Al oprimir node en una consola, puedo hacer cosas en codigo y los cambios se van a reflejar en el navegador web
+    Muy util para probar
+- EL CODIGO SE EJECUTA EN BLOQUE O CASCAD NORMALMENTE Y ES BLOQUEANTE
+- EN CASO DE EJECUCIONES COMPLEJAS, DEMORADAS O ASINCRONAS EL EVENT LOOP ES EL QUE DECIDE EL ORDEN
+- CUANDO HAY ALGO ASINCRONO, SE USA LIBUV y es el encargado de reordenar la respuesta y devolverla, el orden puede que nunca sea igual
+- 
+
+-------------------------------------
+Seccion 3 Desarrollando en Node
+Puntualmente veremos:
+- Package.json
+- Node Modules
+- Scripts
+- Importaciones y Exportaciones
+- Módulos
+- Reforzamiento de JS
+    - Callbacks
+    - Arrow Functions
+    - Factory Functions
+    - Promises
+    - Async Await
+- Peticiones Http básicas
+- Dependencias de Producción y Desarrollo
+- Patrón adaptador para nuestras dependencias
+
+Notas:
+- npm init para crear el package json
+- npm init -y para crear todo por defecto
+- De los scripts npm start es espcial, cualquier otra cosa toca colocar npm run talCosa
+- nodemon para trabajar con node sin correr npm start a toda hora
+- nodemon no debe ir a produccion, al instarlo usar el -D y luego en el package json lo coloca en devDepencies
+- Modificar los scripts del package json para correr nodemon
+- Un Callback es una funcion que se pasa como parametro
+- Factory Function es una funcion que crea otra funcion
+- PATRON ADAPTADOR, ES POR SI QUEREMOS CAMBIAR O ACTUALIZAR LOS PAQUETES DE TERCERO SIN NINGUN PROBLEMA, en el proyecto estan como plugins
+- El patron adaptador es una funcion que usa el paquete de tercero y se le mande algo para que el paquete de tercero haga lo que tenga que hacer y retorne un valor
+    de esa manera la aplicación se hace mucho mas mantenible
+
+-------------------------------------
+Seccion 4 Bases de node + typescript continuacion
+Puntualmente veremos:
+- Loggers y su necesidad
+- Winston
+- Configuraciones básicas y adaptador
+- TypeScript
+- Configuración de TypeScript con Node
+- Migración de proyecto
+- TSC
+- ts-node + nodemon
+- Entre otras cosas
+
+
+Notas:
+- Winston es para revisar los logs, pero no es importante en produccion
+- Al trabajar por ejemplo con nest, no es necesario configurar el typescript porque ya lo hace desde el principio
+
+-------------------------------------
+Seccion 5 INTRODUCCION AL TESTING
+Esta sección tiene por objetivo comprender lo siguiente:
+- ¿Qué es el testing automático?
+- ¿Por qué es importante?
+- Jest testing library
+- Configuraciones Node + TS + Jest
+- Pruebas en todos los archivos realizados en la sección anterior
+- Coverage - Cobertura  del testing
+
+
+Notas:
+- Pruebas unitarias en pequeñas funcionalidades
+- P de integracion, enfocadas en como reaccionan varias piezas en conjunto
+- Pasos AAA: Arrange / Arreglar, Act / Actuar, Asert / Afirmar
+- Probar la ruta critica para no tardar tanto
+- Las implementacion de las pruebas pueden tardar un tiempo similar o mayor al desarrollo del codigo
+- TDD consiste en hacer primero la prueba fallida y luego hacer el codigo para que pase la prueba, hay muchos patrones para hacer las pruebas
+- Usar el testing por defecto del Framework, las mas populares son jest, jasmin y mocha
+- Usar breakpoint: En visual studio code oprimir CTRL + SHIFT + P, colocar npm script y luego arrancar ya sea el test o el proyecto en desarrollo
+- En las pruebas se puede trabajar con test asincronos y dentro colocarles el try y catch si es necesario
+- Probar desde lo mas pequeño a lo mas grande
+- Paquete rimraf para ayudar a conectar build y testing, desplegar build con npm run build
+
+-------------------------------------
+Seccion 6 Aplicacion de consola - Clean arquitecture - primeros pasos
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 7 Aplicacion de consola - testing
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 8 Aplicacion de Monitoreo - necesario
+
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 9 cLEAN arquitecture - Respository pattern
+
+Notas:
+- 
+
+-------------------------------------
+seccion 10 Correos electronicos
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 11 MongoDB y PostgreSQL
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 12 NOC- Testing - Clean arquitecture
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 13 WebServer - Http/http2
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 14 RestServer
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 15 RestServer + PostgreSQL
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 16 Rest - Clean arquitecture
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 17 Rest Testing
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 18 Autenticacion y Autorizacion
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 19 Enviar correo + validacion de tokens
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 20 Proteccion de rutas, relaciones, middlewares y paginacion
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 21 Relaciones y semillas
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 22 Carga de archivos - simple y multiple
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 23 webHooks
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 24 Seguridad de webhooks
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 25 edge functions con netlify
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 26 websockets
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 27 restapi + websockets - aplicación de colas
+
+Notas:
+- 
+
+-------------------------------------
+Seccion 
+
+Notas:
+- 
+
+-------------------------------------
