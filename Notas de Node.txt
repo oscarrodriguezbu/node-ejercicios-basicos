@@ -110,43 +110,130 @@ Seccion 6 Aplicacion de consola - Clean arquitecture - primeros pasos
 Notas:
 - "dev:nodemon": "nodemon -b 7", en package json es para arrancar comandos con Banderas
 - yargs es un paquete de terceros para trabajar con las banderas en consola
-- 
 
 -------------------------------------
 Seccion 7 Aplicacion de consola - testing
+- Pruebas sobre comandos de consola
+- Cambiar dinámicamente los argumentos de consola
+- Mocks
+- Spies
+- Mocks y Spies con retornos personalizados
+- Pruebas cuando se esperan errores
+- Pruebas de Casos de Uso
+- Pruebas de integración
+- Pruebas con funciones asíncronas anónimas auto-invocadas
+- Pruebas con yargs
+- Pruebas con creación de archivos y directorios
 
-Notas:
-- 
 
 -------------------------------------
 Seccion 8 Aplicacion de Monitoreo - necesario
-
+Esta sección empezaremos la creación del NOC, y puntualmente tocaremos temas como:
+- Introducción a la Arquitectura Limpia
+- Introducción a la inyección de dependencias (DI - Dependency injection)
+- JSON-Server
+- Casos de Uso
+- CRON Task - Tareas cronometradas
+Esta sección cuenta con una explicación de cómo lograremos el objetivo de la creación de nuestro 
+sistema de monitoreo de forma global, que a lo largo de las próximas secciones lo haremos funcionar.
 
 Notas:
-- 
+- NOC - APP: Con esta aplicacion se pretende monitoriear un api, enviar correos.
+- La estructura de la aplicacion de afuera hacia adentro como si fuera un circulo de la capa al nucleo: 
+    Database ---> Presenters ---> Use Cases ---> Entities
+- Grabar logs en fileSystem, PostgreSQL y MongoDB
+- Arquitectura Limpia: No deberia de afectar si: Cambiamos la base de datos, cambiamos el motor de correos, añadimos o eliminamos tareas, queremos trabajar con multiples 
+        origenes de datos
+- En la arquitectura Limpia hay que crear mas archivos y directorios
+- La intencion de este ejercicio es comprenderlo todo, mas adelante en otros proyectos del curso se va a seguir trabajando con ejercicios
+- cron es para agregar tareas automaticas para no tener que colocar settimeout o algo asi
+- json server es muy util para hacer prototipos  de restfull api por ejemplo
+- La inyeccion de dependencias es baicamente lo que se hace en angular en el constructor
 
 -------------------------------------
 Seccion 9 cLEAN arquitecture - Respository pattern
+En esta sección trabajaremos con el patron "Repository" para poder construir 
+una forma intercambiable de orígenes de datos.
+
+Puntualmente veremos:
+- Entidades
+- DataSources
+- Repositorios
+- Clases Abstractas
+- Implementaciones
+- Variables de entorno
+- Validación de variables de entorno.
 
 Notas:
-- 
+- cotniene los origenes de los datos,  o de donde vienen
+- repository son las reglas de como va a llegar la data a la bd
+- env-war es para hacer validaciones de las variables de entorno
+- Las variables de entorno siempre devuelven string y toca convertir si se necesita un numero o un booleano por ejemplo
 
 -------------------------------------
 seccion 10 Correos electronicos
+En esta sección aprenderemos a enviar correos electrónicos con y sin archivos adjuntos.
+Puntualmente veremos:
+- Casos de Uso
+- Servicios
+- Inyecciones de dependencias
+- Configuración de password en Gmail (secret keys)
+- NodeMailer
 
 Notas:
-- 
+- Hay muchos gestores de correo pero son de pago, pero en esta seccion se usa nuestra cuenta de gmail
+- Paquete Nodemailer para gestionar los correos en node
+- Los paquetes de terceros se pueden gestionar por servicios ademas de plugins para que su implementacion sea facil de mantener
+
+Resumen de las rutas:
+- config: Van cosas como los plugis, axios, electronicos
+- domain: Reglas con las que va a regir la aplicacion a nivel macro. Origines de datos, entities (como lucen los modelos o entidades), repository (es como quiero trabajar con datasources),
+    casos de uso (Se ejeuctan diferentes acciones), infraestructure (implemtanciones del repositorio en donde se puede cambiar el datasource y el datasource), 
+    presentation (cosas que estan cerca de los usuarios, estan los servicios que son como algo parecido a los plugis nombrados anteriormente)
 
 -------------------------------------
 Seccion 11 MongoDB y PostgreSQL
+Esta sección es para integrar las bases de datos Mongo y PostgreSQL en nuestra aplicación de monitoreo, puntualmente veremos:
+- Mongoose
+- Prisma
+- TypeORM (superficialmente)
+- Migraciones de prisma
+- Insertar en base de datos
+- Leer de base de datos
+- Mapeo de data a Entidades
+- Creación de datasources
+- Caso de uso nuevo, para grabar en múltiples destinos simultáneamente
+Es una sección importante en la cual culminaremos nuestro proyecto de NOC.
 
 Notas:
-- 
+- Se usa mongoose para mongo y primsa para PostgreSQL
+- Orden config mongo: Se configura mongoose, se crea el modelo, 
+    configurar el 04-node-noc-fin-seccion-12\src\domain\datasources\log.datasource.ts,
+    importar el datasource e inicializarlo en 04-node-noc-fin-seccion-12\src\infrastructure\datasources\mongo-log.datasource.ts,
+    tener en cuenta la configuracion de 04-node-noc-fin-seccion-12\src\domain\entities\log.entity.ts,
+    ajustar el server para guardar en la bd,
+
+- orden config prisma: Oranizar el yml y los env, crear el schema.prisma, correr comando de migracion, 
+    inicializar prisma en 04-node-noc-fin-seccion-12\src\infrastructure\datasources\postgres-log.datasource.ts,
+    ajustar el server para guardar en la bd,
+
+- Las migraciones muestra el estado actual y el estado anterior de la bd, puede ser util para hacer rollback en caso tal
+- Para llamar los 3 modos de guardado, se hace en 04-node-noc-fin-seccion-12\src\domain\use-cases\checks\check-service-multiple.ts
 
 -------------------------------------
 Seccion 12 NOC- Testing - Clean arquitecture
+Esta es otra sección de testing en la que nos enfocaremos en probar conceptos como clases abstractas, variables de entorno,
+su configuración para el testing y más.
+
+La idea principal es que como tenemos todo modularizado, debería de ser fácil probar cada pieza de forma individual.
+
+También al final se explica que tener el 100% del coverage es tedioso en algunos casos porque hay que realizar muchas pruebas 
+adicionales que técnicamente no deberían de ser necesarias.
 
 Notas:
+- Como el proyecto usa imagenes de bases de datos, toca hacer pruebas de esa forma, lo normal es que las bases de datos esten en la nube pero 
+    para este ejercicio toca hacer cosas adicionales para poder probar la aplicacion
+- Prober de lo que menos dependencias tenga hacia lo que mas tiene
 - 
 
 -------------------------------------
