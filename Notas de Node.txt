@@ -187,7 +187,8 @@ Notas:
 
 Resumen de las rutas:
 - config: Van cosas como los plugis, axios, electronicos
-- domain: Reglas con las que va a regir la aplicacion a nivel macro. Origines de datos, entities (como lucen los modelos o entidades), repository (es como quiero trabajar con datasources),
+- domain: Reglas con las que va a regir la aplicacion a nivel macro. Origines de datos, entities (como lucen los modelos o entidades), repository 
+    (es como quiero trabajar con datasources),
     casos de uso (Se ejeuctan diferentes acciones), infraestructure (implemtanciones del repositorio en donde se puede cambiar el datasource y el datasource), 
     presentation (cosas que estan cerca de los usuarios, estan los servicios que son como algo parecido a los plugis nombrados anteriormente)
 
@@ -238,32 +239,129 @@ Notas:
 
 -------------------------------------
 Seccion 13 WebServer - Http/http2
+Esta sección tiene por objetivo aprender un poco sobre HTTP, Http2, Https y montar un WebServer con una aplicación corriendo en la web.
+
+Puntualmente veremos:
+- Crear un WebServer
+    - Manual
+    - Con express
+- Variables de entorno
+- Single Page Application + Router de Frontend
+- Servir diferentes archivos
+- Desplegar servidor en la nube
+- GitHub
+- Railway.
+
 
 Notas:
-- 
+- http2 es nuevo, al parecer es mas rapido y mas eficiente
+- http2 debe tener el createSecureServer para que funcione y sea compatible
+- http2 puede interpretarse como una conexion no segura pero es como https
+- Express, Fastify => Nest.js facilitan mucho las configuraciones en node
+- Instalar express, configurarlo como un server en la carpeta presentation, hacerlo funcionar en app.ts
 
 -------------------------------------
 Seccion 14 RestServer
+En esta sección, nos enfocaremos en trabajar con un servidor rest y crear nuestra API.
+Puntualmente veremos:
 
-Notas:
-- 
+- CRUD
+    - Create
+    - Read
+    - Updtate
+    - Delete
+    - Desplegar Restful server a la web
+- Configurar las rutas y los controladores
+
+La idea es dejar las bases de todo el servidor bien organizado, para después conectar una base de datos en 
+la siguiente sección e implementar la arquitectura a su totalidad.
+
 
 -------------------------------------
 Seccion 15 RestServer + PostgreSQL
+- Conectar Postgres a nuestros endpoints
+- DTOs Pattern (Data Transfer Objects)
+- Aprovisionar Postgres en la nube
+- Desplegar aplicación
+
+Es una sección donde aprenderemos de forma tradicional, como realizar las interacciones con la base de datos, 
+pero sin aplicar arquitectura limpia, lo haremos de forma ordenada pero sencillas, que es como comúnmente ustedes lo verán allá afuera,
+y luego en la siguiente sección aplicaremos la arquitectura en su totalidad.
+
+
+********  Data Transfer Object DTO Definition and Usage: ********
+
+A data transfer object (DTO) is an object that carries data between processes. You can use this technique to facilitate communication between two systems 
+(like an API and your server) without potentially exposing sensitive information.
+
+DTOs are commonsense solutions for people with programming backgrounds. If you're a developer, you probably know what these things are and how they work. 
+If you're an average user, DTOs can be incredibly confusing.
+
+We'll do our best to explain DTOs in plain language. But know that we may need to get a bit technical to highlight how they work.
+
+What is a DTO?
+As we explained, DTO stands for data transfer object. As the name suggests, a DTO is an object made to transfer data.
+
+You'll use DTOs in object-oriented programming (OOP) language environments such as Python, C++, and Java. DTOs are easy to develop and update.
+
+OOP environments rely on a system of "calls." Each one is a bit like a data lookup, and they require both time and processing speed. If you’re not careful, 
+calls can also expose sensitive data you'd like to keep hidden, such as:
+
+Employee addresses
+Account numbers
+Social Security numbers 
+Business logins
+As one programmer explainsopens in a new tab, you might require an employee's name and photo to enter your company. You need to provide that data for a match, 
+but you don't need to give other information about the employee that you have within your database. A DTO can transfer only the information required.
+
+How to put a DTO to use
+A DTO should just contain data, not business logic. It's a simple, small thing that should do one task only.
+
+A good DTOopens in a new tab will:
+
+Minimize boilerplate. You'll write each one fresh.
+Be easy to create. DTOs shouldn't be so complicated that you struggle to write them. (Code like this is easy to break.)
+Be readable. Anyone should be able to parse your code.
+
+***************
 
 Notas:
-- 
+- api para practicar: https://developer.themoviedb.org/reference/account-details
+- el dto puede ser una clase o un objeto, cualquier cosa que asegure la data
+- En el proyecto se crea un dto para actualizar y otro para crear todos, se usa para validar
+- express validator facilita las validaciones
 
 -------------------------------------
 Seccion 16 Rest - Clean arquitecture
+En esta sección, nos enfocaremos a trabajar mediante el patrón repositorio y la arquitectura limpia con casos de uso.
+
+Es una sección opcional, pero recomendada, ya que aunque es importante, no quiere decir que es la única forma de trabajar, 
+podemos usar el repositorio, controladores o inclusive los casos de uso directamente, pero si queremos implementarla a su totalidad, aquí tienen una guía al respecto.
+
+En la sección del testing, pueden tomar el código fuente, o bien el suyo sin haber pasado por esta sección porque haremos pruebas de integración con el servidor, 
+lo que significa que no probaremos los casos de uso, probaremos los servicios Rest directamente.
+
 
 Notas:
-- 
+- Se empieza creando el todo entity en la carpeta de domain
+- en domain no debe haber nada externo que interfiera con la logica, nada de paquetes de terceros
+- luego en doamin se crean las carpetas datasources (origenes de datos) y repositories (metodos para llegar al datasource)
+- luego se construye el imp o implementation del datasource
 
 -------------------------------------
 Seccion 17 Rest Testing
+Esta sección de testing, posiblemente es la más simple de todas,
+ porque realizaremos pruebas de integración sobre nuestro servidor Rest.
+
+La idea es que al llamar un endpoint, obtengamos la información deseada y esperada, 
+si llamamos un método de creación, estamos esperando que se cree el elemento,
+y realizaremos posteriormente las limpiezas respectivas.
+
+Sólo vamos a probar aquí, lo que no hemos evaluado antes, por lo que la sección no es tan extensa.
 
 Notas:
+- se trabaja en esta ocasion como una especie de pruebas de integracion
+- En tests\presentation\todos\routes.test.ts se usa supertest
 - 
 
 -------------------------------------
