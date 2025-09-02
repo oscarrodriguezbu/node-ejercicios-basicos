@@ -362,43 +362,110 @@ Sólo vamos a probar aquí, lo que no hemos evaluado antes, por lo que la secci�
 Notas:
 - se trabaja en esta ocasion como una especie de pruebas de integracion
 - En tests\presentation\todos\routes.test.ts se usa supertest
-- 
 
 -------------------------------------
 Seccion 18 Autenticacion y Autorizacion
+En esta sección nos vamos a enfocar en la creación de usuarios para nuestra aplicación, 
+por lo cual ocuparemos:
+- Preparar la base de datos
+- Encriptar mediante un hash de unas sola vía las contraseñas
+- Generar los tokens de acceso
+- Preparar todo el backend
+
+En esta sección comenzaremos de cero de nuevo.
+
 
 Notas:
-- 
+- carpeta domain son las reglas de negocio
+- Se crea una forma que simplifica el manejo de los errores
+- user entity es algo parecido al schema de mongoose pero sin depender de mongoose en caso tal haya que cambiarlo
+- Se crea un dto para validar el request body del register
+- JWT_SEED es cualquier cosa para generar y firmar los tokens
 
 -------------------------------------
 Seccion 19 Enviar correo + validacion de tokens
+En esta sección realizaremos una verificación de correo electrónico y crearemos un túnel para 
+poder conectarnos desde internet a nuestro localhost.
+
+Puntualmente veremos:
+- Envío de correo
+- Creación de links de retorno
+- ngrok para tunneling
+- Variables de entorno para facilitar sus cambios
+- Pruebas de conexión y validación desde el celular
+- Pruebas hacia el localhost desde internet
 
 Notas:
-- 
+- Para lo del correo se usa la configuracion que se hizo en el repo:
+    https://github.com/oscarrodriguezbu/02-node-noc/blob/main/src/presentation/email/email.service.ts
+- se usa nrok para correr la aplicacion desde un celular, sirve para desplegar compartir el puerto del pc y mostrar
+    lo que estamos haciendo rapidamente sin desplegar
+- vscode actualmente tiene opciones para trabajar con puertos en la seccion donde esta la consola
 
 -------------------------------------
 Seccion 20 Proteccion de rutas, relaciones, middlewares y paginacion
+Esta es una sección cargada de mucha información útil que va desde relaciones en nuestros modelos hasta 
+la paginación, puntualmente veremos:
+
+- Middlewares
+- Rutas
+- Modelos
+- Validación de token
+- Query parameters
+- Estrategias de paginación
+- Manejo de errores
+- Consideración sobre uso de servicios y inyección de dependencias.
+
 
 Notas:
-- 
+- Se aconseja no colocar async y await en los controladores, pero se puede manejar con promeas con then y catch
+- Si hay un dto como el paginador que se usa en varias rutas diferentes, entonces se puede crear en una carpeta shared
 
 -------------------------------------
 Seccion 21 Relaciones y semillas
+En esta sección aprenderemos a trabajar con relaciones en nuestras 
+colecciones de Mongo y cómo podemos generar una semilla para poblar la base de datos rápidamente.
+
+Puntualmente veremos:
+- Una nueva forma de DTO completa
+- Validar MongoIDs
+- Crear categorías, productos y usuarios desde una semilla
+- Remover información en la serialización JSON
+
 
 Notas:
-- 
+- No ejecutar el seed en produccion, elimina toda la base de datos
+
 
 -------------------------------------
 Seccion 22 Carga de archivos - simple y multiple
+En esta sección trabajaremos con la carga y lectura de archivos a nuestro servidor, puntualmente veremos:
+
+- Carga Simple
+- Carga Multiple
+- Obtener archivos + Body de la petición http de forma simultánea
+- Validaciones de archivo y extensiones
+- Middlewares personalizados
+- Almacenamiento en File System
+- Obtención del archivo de la petición http
+
+La idea es que podamos trabajar con la carga de archivos y colocarlos donde sea necesario, 
+creando un código que nos permita su expansión y modificación después.
+
 
 Notas:
-- 
+- No subir archivos en el mismo servidor, pueden filtrar contenido malisioso
+- Los archivos pueden pasar por el backend pero no se recomienda que se guarden ahí
+- Se usan dos paquetes para la carga de los archivos, el uuid y el express-fileupload
 
 -------------------------------------
 Seccion 23 webHooks
 
+
+
 Notas:
 - 
+
 
 -------------------------------------
 Seccion 24 Seguridad de webhooks
