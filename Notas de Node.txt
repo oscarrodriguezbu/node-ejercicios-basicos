@@ -460,18 +460,48 @@ Notas:
 
 -------------------------------------
 Seccion 23 webHooks
+En esta sección trabajaremos con webhooks, con los cuales vamos a crear una aplicación que sea capaz de 
+comunica Github con Discord mediante nuestro servidor.
+
+Puntualmente veremos:
+
+-¿Qué son los webhooks? (Explicación)
+-Como funcionan
+-Configurar los webhooks de:
+    -Github
+    -Discord
+-Crear un canal de discord para recibir los mensajes de nuestro server
+-Envio de imágenes a Discord
+-Creación de variables de entorno y todo lo necesario para que esto funcione.
 
 
 
 Notas:
-- 
+- Sirve mucho para hacer pagos, tambien para hacer seguimiento a paginas como github o hacer cositas en discord
+- Tiene riesgos pero al crear los endpoints es muy importante el secret token
+
+Mas info:
+https://docs.github.com/en/webhooks/using-webhooks/creating-webhooks
+https://www.youtube.com/watch?v=41NOoEz3Tzc
 
 
 -------------------------------------
 Seccion 24 Seguridad de webhooks
+Esta sección es bastante es bastante corta, porque nos enfocaremos únicamente en la verificación de los headers de 
+autenticación que nos ofrece Github.
+
+Puntualmente veremos:
+- Headers de petición personalizados
+- Middleware de autenticación
+- Bloqueo de peticiones no válidas
+
 
 Notas:
-- 
+- Siempre seguir la documentacion oficial para hacer las implementaciones, ya sea paypal, github, etc...
+
+Mas info:
+https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries
+
 
 -------------------------------------
 Seccion 25 edge functions con netlify
