@@ -505,15 +505,50 @@ https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries
 
 -------------------------------------
 Seccion 25 edge functions con netlify
+En esta sección trabajaremos creando pequeñas funciones que nos permitan desplegarlas en la nube, 
+y así evitar tener que crear todo un servidor que se encuentre corriendo el 100% del tiempo, en la espera de peticiones http esporádicas.
+
+Lo que veremos es muy utilizado para abaratar costos y desplegar procedimientos en la nube. Hay muchos
+servicios que ofrecen este tipo de funciones en la nube (edge functions) que te permitirán realizar lo que
+necesites, pero en esta sección lo haremos con Netlify por su capa gratuita y funcional.
+
 
 Notas:
-- 
+- Se toma la seccion anterior (https://github.com/oscarrodriguezbu/05-webhooks-server), se eliminan cositas y se sube a netlify
+
+Mas info 
+https://www.netlify.com/
+https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/
+
 
 -------------------------------------
 Seccion 26 websockets
+En esta sección comenzaremos a trabajar con los websockets, los cuales son una forma de comunicación Activa-Activa, 
+es decir tanto el cliente como el servidor pueden iniciar el canal de comunicación, lo que le da el poder al servidor 
+de mandar mensajes que un cliente puede estar interesado.
+
+Puntualmente veremos:
+
+- ¿Qué son los websockets?
+- Librerías para websockets
+- Implementación Nativa del navegador web para WS
+- WS Library para nuestro servidor
+- Configuración mínima en el servidor
+- Broadcasts
+    - Cliente
+    - Servidor
+- Re-conexión manual en caso de perdida de comunicación
+
 
 Notas:
+- websockets Es una comunicacion bilateral
 - 
+
+
+Mas info:
+https://www.npmjs.com/package/ws
+https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+https://www.npmjs.com/package/ws
 
 -------------------------------------
 Seccion 27 restapi + websockets - aplicación de colas
