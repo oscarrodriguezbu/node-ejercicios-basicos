@@ -552,14 +552,20 @@ https://www.npmjs.com/package/ws
 
 -------------------------------------
 Seccion 27 restapi + websockets - aplicación de colas
+El objetivo de esta sección es conectar los Websockets con nuestro Restful API ya así poder disparar 
+la comunicación en tiempo real cuando los eventos sucedan.
 
-Notas:
-- 
+Pero para hacer más entretenido el aprendizaje, crearemos una aplicación de colas, 
+similar a la que se utiliza en lugares donde hay salas de espera, para que la persona imprima 
+un papel con su número y hay una pantalla que muestra cuál es el ticket que se está atendiendo y en dónde.
 
--------------------------------------
-Seccion 
+Puntualmente aprenderemos y reforzaremos:
+- Websockets
+- Restful
+- Conectar WebSockets con Restful
+- Vanilla JavaScript para el frontend
+- Servicios
+- Lógica relacionada para el funcionamiento de la aplicación
 
-Notas:
-- 
 
 -------------------------------------
